@@ -1,10 +1,16 @@
 import './Comment.css'
 
-const Comment = () => {
+const Comment = (props) => {
+
+    const { name, email, message, date } = props
+    console.log(props)
+
     return (
         <div className="comment">
-            <h2>Paulo Godoi</h2>
-            <p>Aqui é o meu Comment Component.</p>
+            <h2>{name}</h2>
+            <p>{email}</p>
+            <p>{message}</p>
+            <p>{date.toString()}</p>
         </div>
     )
 }
