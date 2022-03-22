@@ -18,22 +18,40 @@ class App extends React.Component {
         date: new Date(),
         message: "Aplicando React na prática"
       }
-    ]
+    ],
+    form: {
+      name: '',
+      email: '',
+      message: ''
+    }
   }
 
-  addComment = () => {
-    const newComment = {
-      name: "Felipe Melo",
-      email: "felipe@gmail.com",
-      date: new Date(),
-      message: "Estou gostando do conteúdo!"
-    }
+  addComment = (event) => {
+
+    event.preventDefault()
+
+    const newComment = { ...this.state.form, date: new Date() }
 
     this.setState({
-      comments: [...this.state.comments, newComment]
+      comments: [...this.state.comments, newComment],
+      form: {
+        name: "",
+        email: "",
+        message: ""
+      }
     })
-
   }
+
+  onFieldChanged = (event) => {
+
+    const newCommentForm = this.state.form
+    newCommentForm[event.target.name] = event.target.value
+
+    this.setState({
+      form: newCommentForm
+    })
+  }
+
 
   render() {
     return (
@@ -50,7 +68,40 @@ class App extends React.Component {
             />
           )
         })}
-        <button onClick={this.addComment}>Adicionar Comentário</button>
+        <form onSubmit={this.addComment}>
+          <h2>Add a comment</h2>
+          <div>
+            <input
+              onChange={this.onFieldChanged}
+              value={this.state.form.name}
+              type="text"
+              name="name"
+              placeholder="Digite o seu nome"
+              required="required"
+            />
+          </div>
+          <div>
+            <input
+              onChange={this.onFieldChanged}
+              value={this.state.form.email}
+              type="email"
+              name="email"
+              placeholder="Digite o seu email"
+              required="required"
+            />
+          </div>
+          <div>
+            <textarea
+              onChange={this.onFieldChanged}
+              name="message"
+              rows="4"
+              placeholder="Digite o seu comentário..."
+              value={this.state.form.message}
+              required="required"
+            />
+          </div>
+          <button type="submit">Adicionar Comentário</button>
+        </form>
       </div>
     );
   }
