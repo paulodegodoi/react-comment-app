@@ -52,6 +52,15 @@ class App extends React.Component {
     })
   }
 
+  deleteComment = (comment) => {
+    const filteredList = this.state.comments.filter((commentFilter)=>{
+      return comment !== commentFilter
+    })
+
+    this.setState({
+      comments: filteredList
+    })
+  }
 
   render() {
     return (
@@ -65,6 +74,9 @@ class App extends React.Component {
               email={comments.email}
               date={comments.date}
               message={comments.message}
+              onDeleteComment={()=>{
+                this.deleteComment(comments)
+              }}
             />
           )
         })}
