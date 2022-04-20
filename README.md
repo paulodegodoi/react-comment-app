@@ -2,6 +2,16 @@
 
 Project created using ReactJs
 
+## Some application screenshots
+
+![](https://github.com/paulodegodoi/react-comment-app/blob/main/resources/screenshots/1.jpg)
+
+![](https://github.com/paulodegodoi/react-comment-app/blob/main/resources/screenshots/2.jpg)
+
+![](https://github.com/paulodegodoi/react-comment-app/blob/main/resources/screenshots/3.jpg)
+
+![](https://github.com/paulodegodoi/react-comment-app/blob/main/resources/screenshots/4.jpg)
+
 ## Available Scripts
 
 In the project directory, you can run:
